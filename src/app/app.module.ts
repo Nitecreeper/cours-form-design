@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-
-import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
 import { NormalFormComponent } from './components/normal-form/normal-form.component';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
+
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,6 +16,7 @@ import { ReactiveFormComponent } from './components/reactive-form/reactive-form.
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule
   ],
