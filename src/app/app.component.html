@@ -1,48 +1,5 @@
-<form #myForm = "ngForm" (ngSubmit)="sendData(myForm)">
+<app-normal-form></app-normal-form>
 
-  <div>
-    <label for="">Nombre:</label>
-    <input type="text" id="name" name="name" pattern="^[a-zA-Z]+$" [(ngModel)]="person.name" #name="ngModel" required>
-    <p> {{person.name}} </p>
-    <p> El campo es inválido? {{name.invalid}}</p>
-    <p> El campo es válido? {{name.valid}}</p>
-    <p> {{name.errors | json}} </p>
-    <p *ngIf="name.errors?.['pattern']"> Este campo no acepta valores diferentes a letras </p>
-  </div>
-  <br>
-
-  <div>
-    <label for="">Apellido:</label>
-    <input type="text" id="lastname" name="lastname" [(ngModel)]="person.lastname" #lastname="ngModel">
-    <p> {{person.lastname}} </p>
-  </div>
-  <br>
-
-  <div>
-    <label for=""> Edad: </label>
-    <input type="number" id="age" name="age" [(ngModel)]="person.age" #age="ngModel">
-    <p> {{person.age}} </p>
-  </div>
-  <br>
-  
-  <div>
-    <label for=""> Casado: </label>
-    <input type="checkbox" id="married" name="married" [(ngModel)]="person.married" #married="ngModel">
-    <p> {{person.married}} </p>
-  </div>
-  <br>
-  
-  <div>
-    <label for=""> País: </label>
-    <select name="country" id="country" name="country" [(ngModel)]="person.country" #country="ngModel">
-      <option [value]="country.id" *ngFor="let country of countries"> {{country.name}} </option>
-    </select>
-    <p> {{person.country}} </p>
-  </div>
-  <br>
-
-  <input type="submit" value="Enviar" [disabled]="!myForm.valid">
-  
-</form>
+<app-reactive-form></app-reactive-form>
 
 <router-outlet></router-outlet>

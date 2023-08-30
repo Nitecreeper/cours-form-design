@@ -1,0 +1,49 @@
+<form #myForm = "ngForm" (ngSubmit)="sendData(myForm)">
+
+    <div>
+      <label for="">Nombre:</label>
+      <input type="text" id="name" name="name" class="form-control" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ ]+$" [(ngModel)]="person.name" #name="ngModel" required>
+      <!-- <p> {{person.name}} </p>
+      <p> El campo es inválido? {{name.invalid}}</p>
+      <p> El campo es válido? {{name.valid}}</p>
+      <p> {{name.errors | json}} </p> -->
+      <p *ngIf="name.errors?.['pattern']"> Este campo no acepta valores diferentes a letras </p>
+      <p *ngIf="name.errors?.['required'] && (name.touched || name.dirty)" class="alert alert-danger"> Este campo es requerido </p>
+      <p></p>
+    </div>
+    <br>
+    
+    <div>
+      <label for="">Apellido:</label>
+      <input type="text" id="lastname" name="lastname" class="form-control" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ ]+$" [(ngModel)]="person.lastname" #lastname="ngModel" required>
+      <p *ngIf="lastname.errors?.['pattern']"> Este campo no acepta valores diferentes a letras </p>
+      <p *ngIf="lastname.errors?.['required'] && (lastname.touched || lastname.dirty)" class="alert alert-danger"> Este campo es requerido </p>
+    </div>
+    <br>
+  
+    <div>
+      <label for=""> Edad: </label>
+      <input type="number" id="age" name="age" class="form-control" [(ngModel)]="person.age" #age="ngModel" required>
+      <p *ngIf="validAge(age.value)"> La edad deber ser mayor o igual a 0 </p>
+    </div>
+    <br>
+    
+    <div>
+      <label for=""> Casado: </label>
+      <input type="checkbox" id="married" name="married" [(ngModel)]="person.married" #married="ngModel">
+    </div>
+    <br>
+    
+    <div>
+      <label for=""> País: </label>
+      <select name="country" id="country" name="country" class="form-control" [(ngModel)]="person.country" #country="ngModel" required>
+        <option [value]="country.id" *ngFor="let country of countries"> {{country.name}} </option>
+      </select>
+      <p *ngIf="(country.value === 0)"> Escoja un país </p>
+    </div>
+    <br>
+  
+    <input type="submit" value="Enviar" class="btn btn-outline-primary" [disabled]="!myForm.valid">
+    <p *ngIf="myForm.invalid" style="color: red"> El formulario es inválido </p>
+    
+  </form>
