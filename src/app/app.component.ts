@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 interface Person{
   name: string;
@@ -57,4 +58,13 @@ export class AppComponent {
       name: 'Panamá'
     }
   ]
+
+  sendData(form: NgForm){
+
+    if(form.valid){
+      console.log(form.value);
+    }
+    
+    
+  }
 }

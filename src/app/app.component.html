@@ -1,9 +1,13 @@
-<form #myForm = "ngForm">
+<form #myForm = "ngForm" (ngSubmit)="sendData(myForm)">
 
   <div>
     <label for="">Nombre:</label>
-    <input type="text" id="name" name="name" [(ngModel)]="person.name" #name="ngModel">
+    <input type="text" id="name" name="name" pattern="^[a-zA-Z]+$" [(ngModel)]="person.name" #name="ngModel" required>
     <p> {{person.name}} </p>
+    <p> El campo es inválido? {{name.invalid}}</p>
+    <p> El campo es válido? {{name.valid}}</p>
+    <p> {{name.errors | json}} </p>
+    <p *ngIf="name.errors?.['pattern']"> Este campo no acepta valores diferentes a letras </p>
   </div>
   <br>
 
@@ -36,6 +40,8 @@
     <p> {{person.country}} </p>
   </div>
   <br>
+
+  <input type="submit" value="Enviar" [disabled]="!myForm.valid">
   
 </form>
 
