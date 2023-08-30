@@ -52,5 +52,9 @@ export class AppComponent {
       id: 6,
       name: 'España'
     },
+    {
+      id: 7,
+      name: 'Panamá'
+    }
   ]
 }
