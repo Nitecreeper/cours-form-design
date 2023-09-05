@@ -3,6 +3,43 @@
 <form>
     <div>
         <label for="" class="form-label"> Nombre Cliente: </label>
+        <p>{{customerName.value}}</p>
         <input type="text" id="customerName" name="customerName" class="form-control" [formControl]="customerName">
+    </div>
+    
+    <div>
+        <label for="" class="form-label"> color: </label>
+        <p>{{color.value}}</p>
+        <input type="color" id="color" name="color" class="form-control" [formControl]="color">
+    </div>
+    
+    <div>
+        <label for="" class="form-label"> email: </label>
+        <p>{{email.value}}</p>
+        <input type="email" id="email" name="email" class="form-control" [formControl]="email">
+        <p class="text-danger" *ngIf="email.hasError('required') && (email.dirty || email.touched)">El campo es requerido</p>
+        <p class="text-danger" *ngIf="email.hasError('email') && (email.dirty || email.touched)">El campo no es un email válido</p>
+    </div>
+    
+    <div>
+        <label for="" class="form-label"> Número: </label>
+        <p>{{number.value}}</p>
+        <input type="number" id="number" name="number" class="form-control" [formControl]="number">
+    </div>
+    
+    <div>
+        <label for="" class="form-label"> Frutas: </label>
+        <p>{{fruitArray.value}}</p>
+        <select name="fruitArray" id="fruitArray" [formControl]="fruitArray">
+            <option [value]="fruit" *ngFor="let fruit of fruits">{{ fruit }}</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="" class="form-label"> Colores: </label>
+        <p>{{objColors.value}}</p>
+        <select name="objColors" id="objColors" [formControl]="objColors">
+            <option [value]="color.id" *ngFor="let color of colors">{{ color.name }}</option>
+        </select>
     </div>
 </form>
